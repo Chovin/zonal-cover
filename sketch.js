@@ -43,7 +43,7 @@ function setup() {
   createCanvas(scrSize, scrSize);
   noiseDetail(22,.75) //.75
   flow_field = new FlowField(10, scrSize, 1/60, 1/60)
-  cycle = 1
+  cycle = -1
   RGBl = [
     map(R,0,100,0,255),
     map(G,0,100,0,255),
@@ -53,6 +53,12 @@ function setup() {
 }
 
 function draw() {
+  // loading
+  if (cycle < 1) {
+    fill(50,50,50)
+    textSize(16)
+    text("...Generating...",windowWidth/2,windowHeight/2)
+  }
   // circle
   if (cycle == 1) {
     drawCircle()
